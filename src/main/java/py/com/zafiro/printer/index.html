@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="app">
+
+<head>
+    <title>Print Server</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <link rel="icon" type="image/png" href="/faviconZafiro.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-websocket.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+    <div ng-controller="WSApp" class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" style="padding-top: 3px " href="/#/">
+                        <img alt="ZAFIRO" height="50" src="logoZafiro.png">
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="alert alert-danger" ng-if="!online">
+            <strong>Off-Line</strong> El servidor no esta conectado!
+        </div>
+        <div class="panel" ng-class="register.online?'panel-success':'panel-danger'">
+            <div class="panel-heading"><strong>{{register.online?'On Line':'Off Line'}}</strong></div>
+            <div class="panel-body form-horizontal">
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Serial</label>
+
+                    <div class="col-sm-4">
+                        <div class="form-control-static">{{register.serial}}</div>
+                    </div>
+                    <label class="control-label col-sm-2">Token</label>
+
+                    <div class="col-sm-4">
+                        <div class="form-control-static">{{register.token}}</div>
+                    </div>
+                    <label class="control-label col-sm-2">MAC</label>
+
+                    <div class="col-sm-4">
+                        <div class="form-control-static">{{register.mac}}</div>
+                    </div>
+                    <label class="control-label col-sm-2">Nombre</label>
+
+                    <div class="col-sm-4">
+                        <div class="form-control-static">{{register.hostname}}</div>
+                    </div>
+                    <label class="control-label col-sm-2">IP</label>
+
+                    <div class="col-sm-4">
+                        <div class="form-control-static">{{register.ip}}</div>
+                    </div>
+                    <label class="control-label col-sm-2">Versi&oacute;n</label>
+
+                    <div class="col-sm-4">
+                        <div class="form-control-static">{{register.version}}</div>
+                    </div>
+                </div>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="printer in printers" ng-class="printer.online?'list-group-item-success':'list-group-item-danger'">
+                    <strong>token:</strong> {{printer.id}}
+                    <strong>Impresora:</strong> {{printer.printer}}
+                    <span class="badge">{{printer.online?'On Line':'Off Line'}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <address>
+            <strong>KAVA EAS</strong><br>
+            <abbr title="Email">Email:</abbr><a href="mailto:info@kava.com.py"> info@kava.com.py</a><br>
+            <abbr title="Telefono">Telefono:</abbr><a href="tel:+595981214091"> +595981214091</a>
+        </address>
+        </div>
+    </footer>
+</body>
+
+</html>

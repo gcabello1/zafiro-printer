@@ -1,0 +1,13 @@
+{
+    "name": "Zafiro Printer",
+    "short_name": "ZPrinter",
+    "icons": [{
+        "src": "faviconpg.png",
+        "sizes": "128x128",
+        "type": "image/png"
+    }],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#878786",
+    "theme_color": "#F9B233"
+}
